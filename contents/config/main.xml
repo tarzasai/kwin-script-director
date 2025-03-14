@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+                                http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    <kcfgfile name=""/>
+    <group name="">
+        <entry name="screenNo" type="Int">
+            <label>In which screen manage the windows (0 being the first etc)</label>
+            <default>1</default>
+        </entry>
+        <entry name="parkSide" type="Enum">
+            <label>Which side to use as parking area.</label>
+            <default>LEFT</default>
+            <choices>
+                <choice name="TOP"></choice>
+                <choice name="RIGHT"></choice>
+                <choice name="BOTTOM"></choice>
+                <choice name="LEFT"></choice>
+            </choices>
+        </entry>
+        <entry name="parkSize" type="Int">
+            <label>The percentage of screen to use as parking area (integer, min 10 max 40)</label>
+            <default>20</default>
+        </entry>
+        <entry name="paddingTop" type="Int">
+            <label>The space to reserve at the top of the work area</label>
+            <default>0</default>
+        </entry>
+        <entry name="paddingRight" type="Int">
+            <label>The space to reserve at the right of the work area</label>
+            <default>0</default>
+        </entry>
+        <entry name="paddingBottom" type="Int">
+            <label>The space to reserve at the bottom of the work area</label>
+            <default>0</default>
+        </entry>
+        <entry name="paddingLeft" type="Int">
+            <label>The space to reserve at the left of the work area</label>
+            <default>0</default>
+        </entry>
+        <entry name="filter" type="String">
+            <label>The filter to match the windows to manage (a substring of the caption)</label>
+            <default>mpv</default>
+        </entry>
+        <entry name="whitelist" type="String">
+            <label>One or more filters for windows to ignore (substrings of the caption)</label>
+            <default></default>
+        </entry>
+        <entry name="arrangeAll" type="String">
+            <label>The shortcut to arrange all the matching windows</label>
+            <default></default>
+        </entry>
+        <entry name="raiseFirst" type="String">
+            <label>The shortcut to raise the first parked window</label>
+            <default></default>
+        </entry>
+        <entry name="raiseLast" type="String">
+            <label>The shortcut to raise the last parked window</label>
+            <default></default>
+        </entry>
+    </group>
+</kcfg>

@@ -1,0 +1,22 @@
+{
+  "KPlugin": {
+    "Name": "Director",
+    "Description": "A window management script for KWin",
+    "Category": "Window Management",
+    "Icon": "preferences-system-windows-script-test",
+    "Authors": [
+      {
+        "Email": "tarzasai@gmail.com",
+        "Name": "Giorgio Gelardi"
+      }
+    ],
+    "Id": "director",
+    "Version": "1.0",
+    "License": "CC0-1.0",
+    "Website": "https://github.com/tarzasai/kwin-script-director"
+  },
+  "X-Plasma-API": "javascript",
+  "X-Plasma-MainScript": "code/main.js",
+  "X-KDE-ConfigModule": "kwin/effects/configs/kcm_kwin4_genericscripted",
+  "KPackageStructure": "KWin/Script"
+}
