@@ -1,4 +1,4 @@
-Director
+# Director
 
 A KWin script designed to automatically arrange windows, maximizing screen space for one primary window while "parking" the others on the side, allowing you to keep an eye on all of them.
 
@@ -10,3 +10,16 @@ The script can be configured to park windows on the top, right, bottom, or left 
 
 The script can be configured to arrange all matching windows, raise the first parked window, and raise the last parked window using keyboard shortcuts.
 
+## Screenshots
+
+### configuration
+
+![screenshot](docs/config_ui.png)
+
+### windows parked on the left side
+
+![screenshot](docs/example.png)
+
+### What's missing
+
+Using this script mainly for videos (livestreamings), I'd like to mute the parked windows and unmute the main one automatically, but I have no idea if can be done and how (dbus?).
