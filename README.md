@@ -20,6 +20,16 @@ The script can be configured to arrange all matching windows, raise the first pa
 
 ![screenshot](docs/example.png)
 
-### What's missing
+## Videos
+
+### opening windows
+
+
+
+### changing focus using the "raise first/last" shortcuts
+
+
+
+## What's missing
 
 Using this script mainly for videos (livestreamings), I'd like to mute the parked windows and unmute the main one automatically, but I have no idea if can be done and how (dbus?).
