@@ -24,11 +24,11 @@ The script can be configured to arrange all matching windows, raise the first pa
 
 ### opening windows
 
-
+![Watch the video](docs/opening.mp4)
 
 ### changing focus using the "raise first/last" shortcuts
 
-
+![Watch the video](docs/focusing.mp4)
 
 ## What's missing
 
