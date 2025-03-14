@@ -24,11 +24,11 @@ The script can be configured to arrange all matching windows, raise the first pa
 
 ### opening windows
 
-![Watch the video](docs/opening.mp4)
+https://github.com/user-attachments/assets/19eb248b-64be-48ae-ba5c-c104e43276bd
 
 ### changing focus using the "raise first/last" shortcuts
 
-![Watch the video](docs/focusing.mp4)
+https://github.com/user-attachments/assets/db4f261f-cbab-43c5-9fe0-f578f81a9490
 
 ## What's missing
 
