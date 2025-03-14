@@ -24,11 +24,11 @@ The script can be configured to arrange all matching windows, raise the first pa
 
 ### opening windows
 
-
+![screenshot](docs/opening.gif)
 
 ### changing focus using the "raise first/last" shortcuts
 
-
+![screenshot](docs/focusing.gif)
 
 ## What's missing
 
