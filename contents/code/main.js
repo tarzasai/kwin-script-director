@@ -139,7 +139,7 @@ function State() {
     paddingBottom: readConfig('paddingBottom', 0),
     paddingLeft: readConfig('paddingLeft', 0),
     filter: readConfig('filter', 'mpv'),
-    whitelist: readConfig('whitelist', 'LofiGirl, Lofi Girl').split('\\,').map(w => w.trim()),
+    whitelist: readConfig('whitelist', 'LofiGirl, Lofi Girl').split(',').map(w => w.trim()),
     arrangeAll: readConfig('arrangeAll', 'Ctrl+Alt+I'),
     raiseFirst: readConfig('raiseFirst', 'Ctrl+Alt+O'),
     raiseLast: readConfig('raiseLast', 'Ctrl+Alt+P'),
@@ -150,7 +150,7 @@ function State() {
   calcMainAreaSize(this);
   calcMainWindowSize(this);
   calcParkedWindowSize(this);
-  // log(JSON.stringify(this, undefined, 2));
+  log(JSON.stringify(this, undefined, 2));
 }
 
 
