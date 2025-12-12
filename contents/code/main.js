@@ -134,6 +134,7 @@ function State() {
     screenNo: readConfig('screenNo', 0),
     parkSide: readConfig('parkSide', ParkSide.LEFT),
     parkSize: readConfig('parkSize', 30),
+    fullScreenSingle: readConfig('fullScreenSingle', true),
     paddingTop: readConfig('paddingTop', 0),
     paddingRight: readConfig('paddingRight', 0),
     paddingBottom: readConfig('paddingBottom', 0),
@@ -232,15 +233,38 @@ Director.prototype.moveWindow = function(win, rect) {
 }
 
 Director.prototype.arrangeParkedWindows = function() {
+  // If fullScreenSingle is enabled and there are no parked windows, maximize the main window
+  if (this.state.config.fullScreenSingle && this.parkedWindows.length === 0 && this.mainWindow) {
+    this.mainWindow.setMaximize(true, true);
+    return;
+  }
+  
+  // Otherwise, ensure main window is not maximized and arrange normally
+  if (this.mainWindow) {
+    this.mainWindow.setMaximize(false, false);
+    this.moveWindow(this.mainWindow, this.state.mainWindowSize);
+  }
+  
   if ([ParkSide.TOP, ParkSide.BOTTOM].includes(this.state.config.parkSide)) {
-    // arrange all the parked windows in a single row from left to right
+    // arrange all the parked windows in a single row
     let maxCols = Math.floor(this.state.parkArea.w / this.state.parkedWindowWidth);
-    this.parkedWindows.slice(0, maxCols).forEach((win, col) => this.moveWindow(win, {
-      x: this.state.parkArea.x + (col * this.state.parkedWindowWidth),
-      y: this.state.parkArea.y,
-      w: this.state.parkedWindowWidth,
-      h: this.state.parkedWindowHeight,
-    }));
+    if (this.state.config.parkSide === ParkSide.BOTTOM) {
+      // stack from right to left
+      this.parkedWindows.slice(0, maxCols).forEach((win, col) => this.moveWindow(win, {
+        x: this.state.parkArea.x + this.state.parkArea.w - ((col + 1) * this.state.parkedWindowWidth),
+        y: this.state.parkArea.y,
+        w: this.state.parkedWindowWidth,
+        h: this.state.parkedWindowHeight,
+      }));
+    } else {
+      // stack from left to right (TOP)
+      this.parkedWindows.slice(0, maxCols).forEach((win, col) => this.moveWindow(win, {
+        x: this.state.parkArea.x + (col * this.state.parkedWindowWidth),
+        y: this.state.parkArea.y,
+        w: this.state.parkedWindowWidth,
+        h: this.state.parkedWindowHeight,
+      }));
+    }
   } else {
     // arrange all the parked windows in a single column from top to bottom
     let maxRows = Math.floor(this.state.parkArea.h / this.state.parkedWindowHeight);

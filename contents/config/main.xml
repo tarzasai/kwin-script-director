@@ -23,6 +23,10 @@
             <label>The percentage of screen to use as parking area (integer, min 10 max 40)</label>
             <default>20</default>
         </entry>
+        <entry name="fullScreenSingle" type="Bool">
+            <label>Whether to make a single window fullscreen when there are no parked windows</label>
+            <default>true</default>
+        </entry>
         <entry name="paddingTop" type="Int">
             <label>The space to reserve at the top of the work area</label>
             <default>0</default>
