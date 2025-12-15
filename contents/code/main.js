@@ -162,7 +162,7 @@ function Director() {
   var self = this; // reference for the listeners
   this.listeners = {
     windowAdded: function(win) {
-      if (!self.matchkWindow(win) || self.parkedWindows.length >= self.state.maxParkedWindows)
+      if (!self.matchWindow(win) || self.parkedWindows.length >= self.state.maxParkedWindows)
         return;
       // log('Adding window: ' + win.caption);
       let oldMain = self.mainWindow;
@@ -176,10 +176,8 @@ function Director() {
       if (self.mainWindow === win) {
         // log('Removing main window: ' + win.caption);
         self.mainWindow = self.parkedWindows.shift();
-        if (self.mainWindow) {
-          self.moveWindow(self.mainWindow, self.state.mainWindowSize);
+        if (self.mainWindow)
           self.arrangeParkedWindows();
-        }
       } else {
         let index = self.parkedWindows.indexOf(win);
         if (index >= 0) {
@@ -217,13 +215,14 @@ function Director() {
   };
 };
 
-Director.prototype.matchkWindow = function(win) {
+Director.prototype.matchWindow = function(win) {
   let caption = win.caption.toLocaleLowerCase();
   return caption.includes(this.state.config.filter.toLocaleLowerCase())
     && this.state.config.whitelist.filter(w => caption.includes(w.toLocaleLowerCase())).length <= 0;
 }
 
 Director.prototype.moveWindow = function(win, rect) {
+  win.setMaximize(false, false);
   win.frameGeometry = {
     x: rect.x,
     y: rect.y,
@@ -233,18 +232,14 @@ Director.prototype.moveWindow = function(win, rect) {
 }
 
 Director.prototype.arrangeParkedWindows = function() {
-  // If fullScreenSingle is enabled and there are no parked windows, maximize the main window
-  if (this.state.config.fullScreenSingle && this.parkedWindows.length === 0 && this.mainWindow) {
-    this.mainWindow.setMaximize(true, true);
+  if (this.parkedWindows.length === 0) {
+    if (this.state.config.fullScreenSingle)
+      this.mainWindow.setMaximize(true, true);
+    else
+      this.moveWindow(this.mainWindow, this.state.mainWindowSize);
     return;
   }
-  
-  // Otherwise, ensure main window is not maximized and arrange normally
-  if (this.mainWindow) {
-    this.mainWindow.setMaximize(false, false);
-    this.moveWindow(this.mainWindow, this.state.mainWindowSize);
-  }
-  
+  this.moveWindow(this.mainWindow, this.state.mainWindowSize);
   if ([ParkSide.TOP, ParkSide.BOTTOM].includes(this.state.config.parkSide)) {
     // arrange all the parked windows in a single row
     let maxCols = Math.floor(this.state.parkArea.w / this.state.parkedWindowWidth);
